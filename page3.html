@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day 🌹</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(120deg,#ffd6e8,#ffe9a0,#ffb6c1);
+  background-size:300% 300%;
+  animation:bgMove 10s ease infinite;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp linear infinite;
+  opacity:0.7;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:0}
+  50%{opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
+}
+
+.container{
+  background:rgba(255,255,255,0.45);
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  max-width:420px;
+  width:90%;
+  position:relative;
+  z-index:2;
+}
+
+/* Flying message */
+h1{
+  font-family:'Pacifico',cursive;
+  color:#ff5c8a;
+  font-size:36px;
+  animation:flyIn 1.8s ease forwards;
+}
+
+@keyframes flyIn{
+  from{opacity:0; transform:translateY(80px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+p{
+  margin-top:12px;
+  color:#444;
+  font-size:15px;
+  animation:fadeIn 2.5s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* Teddy */
+.teddy{
+  font-size:90px;
+  margin:20px 0;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* Buttons */
+.buttons{
+  margin-top:25px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  position:relative;
+}
+
+.btn{
+  padding:12px 26px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
+  transition:0.3s;
+  position:relative;
+}
+
+.yes{
+  background:#ff5c8a;
+  color:white;
+  box-shadow:0 5px 15px rgba(255,92,138,0.5);
+}
+
+.no{
+  background:white;
+  color:#ff5c8a;
+  border:2px solid #ff5c8a;
+}
+
+.popup{
+  margin-top:15px;
+  min-height:24px;
+  color:#444;
+  font-size:15px;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+/* floating hearts */
+for(let i=0;i<18;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerText="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="container">
+  <h1>Happy Rose Day, Cutie 🌹</h1>
+
+  <p>
+    This little rose comes with a thousand smiles<br>
+    and one very honest feeling for you 💖
+  </p>
+
+  <div class="teddy">🧸🌹</div>
+
+  <p><b>Will you accept my rose? 🌹</b></p>
+
+  <div class="buttons">
+    <button class="btn yes" id="yesBtn">Haan Ji 💖</button>
+    <button class="btn no" id="noBtn">Naa Ji 😌</button>
+  </div>
+
+  <div class="popup" id="popup"></div>
+</div>
+
+<script>
+let noCount = 0;
+
+const teasing = [
+  "Arre arre, itni jaldi nahi 😜",
+  "Rose mana nahi karte 🌹",
+  "Naa Ji allowed nahi hai 🙈",
+  "Sharma rahe ho kya 😌",
+  "Bas bas, maan jao 😆",
+  "Almost yes hi bol diya 💖"
+];
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const popup = document.getElementById("popup");
+
+noBtn.addEventListener("click",()=>{
+  noCount++;
+  popup.innerText = teasing[Math.floor(Math.random()*teasing.length)];
+
+  if(noCount>=7){
+    noBtn.style.display="none";
+    popup.innerText="Lagta hai Naa Ji haar gayi 😆💖";
+    return;
+  }
+
+  const x = Math.random()*120 - 60;
+  const y = Math.random()*40;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+});
+
+yesBtn.addEventListener("click",()=>{
+  popup.innerText="Yay! Maan gayi 💖🌹";
+  setTimeout(()=>{
+    window.location.href="page4.html";
+  },1200);
+});
+</script>
+
+</body>
+</html>
