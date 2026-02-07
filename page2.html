@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Little Surprise 🎁</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(120deg,#ffd6e8,#ffe9a0,#ffb6c1);
+  background-size:300% 300%;
+  animation:bgMove 10s ease infinite;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.container{
+  text-align:center;
+  background:rgba(255,255,255,0.4);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1{
+  font-family:'Pacifico',cursive;
+  color:#ff5c8a;
+  font-size:36px;
+  text-shadow:2px 2px 8px rgba(255,92,138,0.4);
+}
+
+.gift{
+  font-size:100px;
+  margin:30px 0;
+  cursor:pointer;
+  transition:0.3s;
+  position:relative;
+}
+
+.popup{
+  margin-top:15px;
+  color:#444;
+  font-size:16px;
+  min-height:24px;
+}
+
+/* open animation */
+.open{
+  animation:openGift 1s ease forwards;
+}
+
+@keyframes openGift{
+  0%{transform:scale(1) rotate(0deg)}
+  50%{transform:scale(1.2) rotate(10deg)}
+  100%{transform:scale(0) rotate(0deg)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Hey cutie, click this box<br>for a surprise 💝</h1>
+
+  <div class="gift" id="gift">🎁</div>
+
+  <div class="popup" id="popup"></div>
+</div>
+
+<script>
+let clicks = 0;
+
+const messages = [
+  "It’s not going to open so easily 😜",
+  "What happened? Try again 😆",
+  "Oops! Not yet 🙈",
+  "Haha… almost there 💖",
+  "Okay okay… one more try 😉",
+  "You’re very close 😍"
+];
+
+const gift = document.getElementById("gift");
+const popup = document.getElementById("popup");
+
+gift.addEventListener("click", () => {
+  clicks++;
+
+  if (clicks < 7) {
+    // teasing message
+    popup.innerText = messages[Math.floor(Math.random()*messages.length)];
+
+    // move gift randomly
+    const x = Math.random()*200 - 100;
+    const y = Math.random()*200 - 100;
+    gift.style.transform = `translate(${x}px,${y}px)`;
+  } else {
+    popup.innerText = "Yay! You opened it 🎉💖";
+    gift.classList.add("open");
+
+    // redirect after animation
+    setTimeout(()=>{
+      window.location.href="page3.html";
+    },1000);
+  }
+});
+</script>
+
+</body>
+</html>
