@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rose Day Surprise 🌹</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(120deg, #ffd6e8, #ffe9a0, #ffb6c1);
+      background-size: 300% 300%;
+      animation: bgMove 10s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255,255,255,0.4);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 42px;
+      color: #ff5c8a;
+      text-shadow: 2px 2px 8px rgba(255,92,138,0.4);
+      animation: fadeIn 2s ease;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #444;
+      animation: fadeIn 3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Teddy */
+    .teddy {
+      font-size: 90px;
+      margin: 20px 0;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .btn {
+      margin-top: 25px;
+      padding: 14px 35px;
+      font-size: 16px;
+      background: #ff5c8a;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(255,92,138,0.5);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: #ff3f78;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating hearts -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="container">
+    <h1>Suno Cutie… 🌸<br>I Have Something Special for You</h1>
+
+    <div class="teddy">🧸🌹</div>
+
+    <p>
+      This little surprise is filled with love,<br>
+      smiles, roses and a teddy holding my feelings for you 💕
+    </p>
+
+    <!-- SECOND PAGE LINK -->
+    <a href="page2.html" class="btn">Tap to Feel the Love 💌</a>
+  </div>
+
+</body>
+</html>
